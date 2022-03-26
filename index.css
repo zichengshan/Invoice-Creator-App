@@ -1,3 +1,59 @@
 * {
     box-sizing: border-box;
 }
+
+body {
+    width: 550px;
+    height: 719px;
+    left: 155px;
+    top: 959px;
+    background: #1F2937;
+    color: white;
+    text-align: center;
+    margin: 30px auto;
+    border: 2px solid white;
+}
+
+.header {
+    background: #3A69D2;
+    padding: 20px 109px 30px 87px
+}
+
+.buttons {
+    padding: 20px 20px
+}
+
+button {
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+
+    padding:10px;
+    margin: 0 5px;
+
+    background: #D1D4F4;
+    color: black;
+    width: 150px;
+
+    border: none;
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+button:active {
+    box-shadow: 0 2px #666;
+    transform: translateY(4px);
+}
+
+#reset-btn {
+    justify-content: center;
+    align-items: center;
+    padding: 9px 17px 9px 15px;
+    width: 473px;
+    height: 44px;
+    left: 38px;
+    top: 532px;
+
+    background: #3A69D2;
+
+}
