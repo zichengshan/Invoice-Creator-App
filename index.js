@@ -1,16 +1,17 @@
 
 let money = 0
-let task = [4]
-let taskMoney = [1]
+let task = []
+let taskMoney = []
 const resetBtnEl = document.getElementById("reset-btn")
 const addBtnEl = document.getElementById("add-btn")
 const inputsNameEl = document.getElementById("inputs-name")
 const inputsMoneyEl = document.getElementById("inputs-money")
 const taskEl = document.getElementById("task")
-
+const totalAmountEl = document.getElementById("total-amount")
 
 render()
 addBtnEl.addEventListener("click", function () {
+    money += parseInt(inputsMoneyEl.value)
     task.push(inputsNameEl.value)
     taskMoney.push(inputsMoneyEl.value)
     render()
@@ -28,11 +29,13 @@ function render() {
         `
     }
     taskEl.innerHTML = innerHtml
+    totalAmountEl.innerHTML = "$" + money
     inputsNameEl.value = ""
     inputsMoneyEl.value = ""
 }
 
 function remove(index){
+    money -= parseInt(taskMoney[index])
     task.splice(index, 1)
     taskMoney.splice(index,1)
     render()
@@ -42,5 +45,6 @@ function remove(index){
 resetBtnEl.addEventListener("click", function () {
     task = []
     taskMoney = []
+    money = 0
     render()
 })
