@@ -13,6 +13,10 @@ body {
     border: 2px solid white;
 }
 
+p {
+    font-size: 15px;
+}
+
 .header {
     background: #3A69D2;
     padding: 20px 109px 30px 87px
@@ -75,6 +79,13 @@ button:active {
     transform: translateY(4px);
 }
 
+#remove-btn {
+    background-color: #1F2937;
+    color: white;
+    font-size: 8px;
+    margin-left: 0px;
+}
+
 #reset-btn {
     justify-content: center;
     align-items: center;
@@ -88,12 +99,10 @@ button:active {
     background: #3A69D2;
 }
 
-.task-name {
-    margin-right: auto;
+.task-money {
+    margin-left: auto;
 }
 
 #task {
-    /*display: flex;*/
-    padding: 0px 20px;
-    /*font-size: 12px;*/
+    padding: 0px 15px;
 }

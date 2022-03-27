@@ -1,7 +1,7 @@
 
 let money = 0
-let task = []
-let taskMoney = []
+let task = [4]
+let taskMoney = [1]
 const resetBtnEl = document.getElementById("reset-btn")
 const addBtnEl = document.getElementById("add-btn")
 const inputsNameEl = document.getElementById("inputs-name")
@@ -22,7 +22,7 @@ function render() {
         innerHtml += `
         <div class="subTitle">
                 <p class="task-name"> ${task[i]} </p>
-                
+                <button id="remove-btn" onclick="remove(${i})">Remove</button>
                 <p class="task-money"> ${taskMoney[i]}</p>
         </div>
         `
@@ -30,6 +30,12 @@ function render() {
     taskEl.innerHTML = innerHtml
     inputsNameEl.value = ""
     inputsMoneyEl.value = ""
+}
+
+function remove(index){
+    task.splice(index, 1)
+    taskMoney.splice(index,1)
+    render()
 }
 
 
