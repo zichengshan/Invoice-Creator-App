@@ -1,7 +1,7 @@
 
-let money = 0
-let task = []
-let taskMoney = []
+localStorage.setItem("money", "0")
+localStorage.setItem("task", "[]")
+localStorage.setItem("taskMoney","[]")
 const resetBtnEl = document.getElementById("reset-btn")
 const addBtnEl = document.getElementById("add-btn")
 const inputsNameEl = document.getElementById("inputs-name")
@@ -11,40 +11,54 @@ const totalAmountEl = document.getElementById("total-amount")
 
 render()
 addBtnEl.addEventListener("click", function () {
-    money += parseInt(inputsMoneyEl.value)
+    let money = parseInt(localStorage.getItem("money")) + parseInt(inputsMoneyEl.value)
+    let task = JSON.parse(localStorage.getItem("task"))
+    let taskMoney = JSON.parse(localStorage.getItem("taskMoney"))
+
+    localStorage.setItem("money", JSON.stringify(money))
     task.push(inputsNameEl.value)
     taskMoney.push(inputsMoneyEl.value)
+    localStorage.setItem("task", JSON.stringify(task))
+    localStorage.setItem("taskMoney", JSON.stringify(taskMoney))
     render()
 })
 
 function render() {
+    let task = JSON.parse(localStorage.getItem("task"))
+    let taskMoney = JSON.parse(localStorage.getItem("taskMoney"))
     let innerHtml = ""
     for(let i = 0; i < taskMoney.length; i++){
         innerHtml += `
-        <div class="subTitle">
-                <p class="task-name"> ${task[i]} </p>
-                <button id="remove-btn" onclick="remove(${i})">Remove</button>
-                <p class="task-money"> ${taskMoney[i]}</p>
-        </div>
+            <div class="subTitle">
+                    <p class="task-name"> ${task[i]} </p>
+                    <button id="remove-btn" onclick="remove(${i})">Remove</button>
+                    <p class="task-money"> $ ${taskMoney[i]}</p>
+            </div>
         `
     }
     taskEl.innerHTML = innerHtml
-    totalAmountEl.innerHTML = "$" + money
+    totalAmountEl.innerHTML = "$" + localStorage.getItem("money")
     inputsNameEl.value = ""
     inputsMoneyEl.value = ""
 }
 
 function remove(index){
-    money -= parseInt(taskMoney[index])
+    let task = JSON.parse(localStorage.getItem("task"))
+    let taskMoney = JSON.parse(localStorage.getItem("taskMoney"))
+    let money = parseInt(localStorage.getItem("money")) - parseInt(taskMoney[index])
+    localStorage.setItem("money", JSON.stringify(money))
+
     task.splice(index, 1)
     taskMoney.splice(index,1)
+    localStorage.setItem("task", JSON.stringify(task))
+    localStorage.setItem("taskMoney", JSON.stringify(taskMoney))
     render()
 }
 
 
 resetBtnEl.addEventListener("click", function () {
-    task = []
-    taskMoney = []
-    money = 0
+    localStorage.setItem("money", "0")
+    localStorage.setItem("task", "[]")
+    localStorage.setItem("taskMoney","[]")
     render()
 })
