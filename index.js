@@ -11,16 +11,20 @@ const totalAmountEl = document.getElementById("total-amount")
 
 render()
 addBtnEl.addEventListener("click", function () {
-    let money = parseInt(localStorage.getItem("money")) + parseInt(inputsMoneyEl.value)
-    let task = JSON.parse(localStorage.getItem("task"))
-    let taskMoney = JSON.parse(localStorage.getItem("taskMoney"))
+    if(parseInt(inputsMoneyEl.value)){
+        let money = parseInt(localStorage.getItem("money")) + parseInt(inputsMoneyEl.value)
+        let task = JSON.parse(localStorage.getItem("task"))
+        let taskMoney = JSON.parse(localStorage.getItem("taskMoney"))
 
-    localStorage.setItem("money", JSON.stringify(money))
-    task.push(inputsNameEl.value)
-    taskMoney.push(inputsMoneyEl.value)
-    localStorage.setItem("task", JSON.stringify(task))
-    localStorage.setItem("taskMoney", JSON.stringify(taskMoney))
-    render()
+        localStorage.setItem("money", JSON.stringify(money))
+        task.push(inputsNameEl.value)
+        taskMoney.push(inputsMoneyEl.value)
+        localStorage.setItem("task", JSON.stringify(task))
+        localStorage.setItem("taskMoney", JSON.stringify(taskMoney))
+        render()
+    }else {
+        alert("Invalid money input! Please enter a number!")
+    }
 })
 
 function render() {
